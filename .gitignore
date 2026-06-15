@@ -1,0 +1,64 @@
+# ── Java / Maven ──────────────────────────────────────────────────────
+target/
+*.class
+*.jar
+!**/src/main/**/*.jar
+.mvn/wrapper/maven-wrapper.jar
+
+# ── Spring Boot ───────────────────────────────────────────────────────
+application-local.yml
+application-local.properties
+
+# ── IntelliJ IDEA ─────────────────────────────────────────────────────
+.idea/
+*.iml
+*.iws
+out/
+
+# ── VS Code ───────────────────────────────────────────────────────────
+.vscode/
+
+# ── Python / ML ───────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+*.egg-info/
+
+# ML model files (too large for Git -- use DVC in Phase 6)
+erap-ml-service/models/*.pkl
+erap-ml-service/models/*.onnx
+erap-ml-service/models/*.bin
+erap-ml-service/models/sentiment_distilbert/
+
+# Raw datasets -- never committed
+erap-data/raw/
+erap-data/**/*.csv
+erap-data/**/*.parquet
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# ── React / Node ──────────────────────────────────────────────────────
+node_modules/
+erap-frontend/dist/
+erap-frontend/.cache/
+
+# ── Docker ────────────────────────────────────────────────────────────
+*.log
+
+# ── Secrets -- NEVER commit these ─────────────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+*.p12
+secrets.yml
+application-secret.yml
+
+# ── OS ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
