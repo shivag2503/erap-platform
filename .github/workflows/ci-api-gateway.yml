@@ -1,0 +1,15 @@
+name: CI - API Gateway
+
+on:
+  push:
+    paths: ['erap-api-gateway/**']
+  pull_request:
+    paths: ['erap-api-gateway/**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder - no code yet
+        run: echo "API Gateway CI - tests will be added when service is built"

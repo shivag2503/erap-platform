@@ -1,0 +1,15 @@
+name: CI - Notification Service
+
+on:
+  push:
+    paths: ['erap-notification-service/**']
+  pull_request:
+    paths: ['erap-notification-service/**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder - no code yet
+        run: echo "Notification Service CI - tests will be added when service is built"

@@ -1,0 +1,15 @@
+name: CI - Customer Service
+
+on:
+  push:
+    paths: ['erap-customer-service/**']
+  pull_request:
+    paths: ['erap-customer-service/**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder - no code yet
+        run: echo "Customer Service CI - tests will be added when service is built"
