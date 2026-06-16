@@ -1,0 +1,12 @@
+name: CD - Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder - activated in Phase 6
+        run: echo "CD pipeline will be activated in Phase 6"
