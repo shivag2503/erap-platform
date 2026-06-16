@@ -1,0 +1,15 @@
+name: CI - Analytics Service
+
+on:
+  push:
+    paths: ['erap-analytics-service/**']
+  pull_request:
+    paths: ['erap-analytics-service/**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder - no code yet
+        run: echo "Analytics Service CI - tests will be added when service is built"

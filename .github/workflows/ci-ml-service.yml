@@ -1,0 +1,15 @@
+name: CI - ML Service
+
+on:
+  push:
+    paths: ['erap-ml-service/**']
+  pull_request:
+    paths: ['erap-ml-service/**']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder - no code yet
+        run: echo "ML Service CI - pytest will be added in Phase 3"

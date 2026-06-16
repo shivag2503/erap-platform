@@ -1,0 +1,15 @@
+name: CI - Frontend
+
+on:
+  push:
+    paths: ['erap-frontend/**']
+  pull_request:
+    paths: ['erap-frontend/**']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder - no code yet
+        run: echo "Frontend CI - Jest will be added when React app is built"
