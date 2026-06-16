@@ -292,13 +292,13 @@
     </build>
 
     <modules>
-        <module>erap-api-gateway</module>
-        <module>erap-product-service</module>
-        <module>erap-order-service</module>
-        <module>erap-customer-service</module>
-        <module>erap-payment-service</module>
+<!--        <module>erap-api-gateway</module>-->
+<!--        <module>erap-product-service</module>-->
+<!--        <module>erap-order-service</module>-->
+<!--        <module>erap-customer-service</module>-->
+<!--        <module>erap-payment-service</module>-->
         <module>erap-analytics-service</module>
-        <module>erap-notification-service</module>
+<!--        <module>erap-notification-service</module>-->
         <!-- erap-ml-service is Python/FastAPI — not a Maven module -->
         <!-- erap-frontend is React/Node — not a Maven module -->
     </modules>
