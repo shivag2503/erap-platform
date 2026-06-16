@@ -10,6 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Step 1 — Download your code onto the runner
       - uses: actions/checkout@v4
-      - name: Placeholder - no code yet
-        run: echo "Analytics Service CI - tests will be added when service is built"
+
+      # Step 2 - Install Java 21 on the runner
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      # Step 3 - Run Maven tests
+      - name: Build and Test
+        run: mvn test -pl erap-analytics-service
