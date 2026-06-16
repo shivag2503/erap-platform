@@ -11,9 +11,15 @@
 - [ ] docs    -- documentation only
 
 ## Service(s) affected
-- [ ] api-gateway      - [ ] product-svc    - [ ] order-svc
-- [ ] customer-svc     - [ ] payment-svc    - [ ] analytics-svc
-- [ ] notification-svc - [ ] ml-svc         - [ ] frontend
+- [ ] api-gateway      
+- [ ] product-svc    
+- [ ] order-svc
+- [ ] customer-svc     
+- [ ] payment-svc    
+- [ ] analytics-svc
+- [ ] notification-svc 
+- [ ] ml-svc         
+- [ ] frontend
 
 ## How to test
 1. 
