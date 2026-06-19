@@ -46,6 +46,10 @@
         <twilio.version>10.1.0</twilio.version>
         <onnxruntime.version>1.18.0</onnxruntime.version>
         <spotless.version>2.43.0</spotless.version>
+
+        <spring-dotenv.version>4.0.0</spring-dotenv.version>
+
+        <h2.version>2.2.224</h2.version>
     </properties>
 
     <dependencyManagement>
@@ -145,6 +149,18 @@
                 <groupId>com.microsoft.onnxruntime</groupId>
                 <artifactId>onnxruntime</artifactId>
                 <version>${onnxruntime.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>me.paulschwarz</groupId>
+                <artifactId>spring-dotenv</artifactId>
+                <version>${spring-dotenv.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
             </dependency>
 
         </dependencies>
@@ -276,13 +292,13 @@
     </build>
 
     <modules>
-        <module>erap-api-gateway</module>
-        <module>erap-product-service</module>
-        <module>erap-order-service</module>
-        <module>erap-customer-service</module>
-        <module>erap-payment-service</module>
+<!--        <module>erap-api-gateway</module>-->
+<!--        <module>erap-product-service</module>-->
+<!--        <module>erap-order-service</module>-->
+<!--        <module>erap-customer-service</module>-->
+<!--        <module>erap-payment-service</module>-->
         <module>erap-analytics-service</module>
-        <module>erap-notification-service</module>
+<!--        <module>erap-notification-service</module>-->
         <!-- erap-ml-service is Python/FastAPI — not a Maven module -->
         <!-- erap-frontend is React/Node — not a Maven module -->
     </modules>
