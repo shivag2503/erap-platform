@@ -47,16 +47,20 @@ erap-frontend/dist/
 erap-frontend/.cache/
 
 # ── Docker ────────────────────────────────────────────────────────────
-*.log
+# docker-compose.override.yml (add when needed)
 
 # ── Secrets -- NEVER commit these ─────────────────────────────────────
-.env
 .env.*
+!.env.example
 *.pem
 *.key
 *.p12
 secrets.yml
 application-secret.yml
+
+# ── Logs ──────────────────────────────────────────────────────────────
+logs/
+*.log
 
 # ── OS ────────────────────────────────────────────────────────────────
 .DS_Store
