@@ -26,13 +26,26 @@ public class DailySalesSummaryController {
     public ResponseEntity<PagedResponse<DailySalesSummaryResponse>> getDailySales(
             @PageableDefault(size = 30, sort = "date", direction = Sort.Direction.DESC)
             Pageable pageable) {
+        log.info("GET /api/v1/analytics/sales/daily called — page: {}, size: {}, sort: {}",
+                pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
+
         PagedResponse<DailySalesSummaryResponse> dailySales = dailySalesSummaryService.getDailySales(pageable);
+
+        log.info("GET /api/v1/analytics/sales/daily completed — returned {} records",
+                dailySales.getContent().size());
+
         return ResponseEntity.ok(dailySales);
     }
 
     @GetMapping("/kpis")
     public ResponseEntity<KpiResponse> getKpis() {
+        log.info("GET /api/v1/analytics/kpis called");
+
         KpiResponse kpis = dailySalesSummaryService.getKpis();
+
+        log.info("GET /api/v1/analytics/kpis completed — todayOrders: {}, weekOrders: {}, monthOrders: {}",
+                kpis.getTotalOrdersToday(), kpis.getTotalOrdersThisWeek(), kpis.getTotalOrdersThisMonth());
+
         return ResponseEntity.ok(kpis);
     }
 }
