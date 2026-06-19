@@ -27,7 +27,14 @@ public class DailySalesSummaryService {
     private final DailySalesSummaryMapper dailySalesSummaryMapper;
 
     public PagedResponse<DailySalesSummaryResponse> getDailySales(Pageable pageable) {
+        log.info("Fetching daily sales summary — page: {}, size: {}",
+                pageable.getPageNumber(), pageable.getPageSize());
+
         Page<DailySalesSummary> page  = dailySalesSummaryRepository.findAll(pageable);
+
+        log.info("Retrieved {} records out of {} total daily sales summaries",
+                page.getNumberOfElements(), page.getTotalElements());
+
         return new PagedResponse<>(
                 page.getContent().stream()
                         .map(dailySalesSummaryMapper::toResponse)
@@ -43,6 +50,8 @@ public class DailySalesSummaryService {
     }
 
     public KpiResponse getKpis() {
+        log.info("Calculating KPIs for today, this week, and this month");
+
         LocalDate today = LocalDate.now();
         LocalDate startOfWeek = today.with(DayOfWeek.MONDAY);
         LocalDate startOfMonth = today.withDayOfMonth(1);
@@ -50,6 +59,9 @@ public class DailySalesSummaryService {
         Optional<DailySalesSummary> todayData = dailySalesSummaryRepository.findByDate(today);
         List<DailySalesSummary> weekData = dailySalesSummaryRepository.findByDateBetween(startOfWeek, today);
         List<DailySalesSummary> monthData = dailySalesSummaryRepository.findByDateBetween(startOfMonth, today);
+
+        log.info("Found data points — today: {}, this week: {} days, this month: {} days",
+                todayData.isPresent() ? 1 : 0, weekData.size(), monthData.size());
 
         int totalOrdersToday = todayData.map(DailySalesSummary::getTotalOrders).orElse(0);
         BigDecimal revenueToday = todayData.map(DailySalesSummary::getTotalRevenue)
@@ -62,6 +74,9 @@ public class DailySalesSummaryService {
         int totalOrdersThisMonth = monthData.stream().mapToInt(DailySalesSummary::getTotalOrders).sum();
         BigDecimal revenueThisMonth = monthData.stream().map(DailySalesSummary::getTotalRevenue)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        log.info("KPIs calculated successfully — todayOrders: {}, weekOrders: {}, monthOrders: {}",
+                totalOrdersToday, totalOrdersThisWeek, totalOrdersThisMonth);
 
         return KpiResponse.builder()
                 .totalOrdersToday(totalOrdersToday)
