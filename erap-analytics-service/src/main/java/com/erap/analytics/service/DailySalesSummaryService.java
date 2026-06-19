@@ -3,6 +3,7 @@ package com.erap.analytics.service;
 import com.erap.analytics.dto.DailySalesSummaryResponse;
 import com.erap.analytics.dto.KpiResponse;
 import com.erap.analytics.dto.PagedResponse;
+import com.erap.analytics.mapper.DailySalesSummaryMapper;
 import com.erap.analytics.model.DailySalesSummary;
 import com.erap.analytics.repository.DailySalesSummaryRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,12 +24,13 @@ import java.util.Optional;
 public class DailySalesSummaryService {
 
     private final DailySalesSummaryRepository dailySalesSummaryRepository;
+    private final DailySalesSummaryMapper dailySalesSummaryMapper;
 
     public PagedResponse<DailySalesSummaryResponse> getDailySales(Pageable pageable) {
         Page<DailySalesSummary> page  = dailySalesSummaryRepository.findAll(pageable);
         return new PagedResponse<>(
                 page.getContent().stream()
-                        .map(this::toResponse)
+                        .map(dailySalesSummaryMapper::toResponse)
                         .toList(),
                 new PagedResponse.PageMetadata(page.getNumber(),
                         page.getSize(),
@@ -68,18 +70,6 @@ public class DailySalesSummaryService {
                 .revenueThisWeek(revenueThisWeek)
                 .totalOrdersThisMonth(totalOrdersThisMonth)
                 .revenueThisMonth(revenueThisMonth)
-                .build();
-    }
-
-    private DailySalesSummaryResponse toResponse(DailySalesSummary entity) {
-        return DailySalesSummaryResponse.builder()
-                .summaryId(entity.getSummaryId())
-                .date(entity.getDate())
-                .totalOrders(entity.getTotalOrders())
-                .totalRevenue(entity.getTotalRevenue())
-                .avgOrderValue(entity.getAvgOrderValue())
-                .topCategory(entity.getTopCategory())
-                .createdAt(entity.getCreatedAt())
                 .build();
     }
 }
